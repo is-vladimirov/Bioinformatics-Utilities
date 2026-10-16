@@ -1,11 +1,15 @@
 def bounds_unification(bounds):
-    """Преобразует одно число в 2 границы; если заданы обе границы, возвращает их"""
+    """
+    Преобразует одно число в 2 границы; если заданы обе границы, возвращает их
+    """
     if isinstance(bounds, (int, float)):
         return 0, bounds
     return bounds
 
 def read_fastq(file):
-    """Читает один рид (4 строки) из FASTQ-файла"""
+    """
+    Читает один рид (4 строки) из FASTQ-файла
+    """
     header = file.readline()
 
     if not header:
@@ -25,7 +29,9 @@ def write_fastq(file, read):
 
 
 def check_gc(sequence, gc_bounds):
-    """Вычисляет GC-состав рида в процентах и сравнивает с допустимыми значениями"""
+    """
+    Вычисляет GC-состав рида в процентах и сравнивает с допустимыми значениями
+    """
     lower, upper = bounds_unification(gc_bounds)
 
     sequence = sequence.strip().upper()
@@ -54,7 +60,9 @@ def check_length(sequence, length_bounds):
 
 
 def check_quality(quality, quality_threshold):
-    """Вычисляет среднее качество рида по шкале Phred+33 и сравнивает с допустимыми значениями"""
+    """
+    Вычисляет среднее качество рида по шкале Phred+33 и сравнивает с допустимыми значениями
+    """
     quality = quality.strip()
 
     if not quality:

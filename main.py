@@ -18,7 +18,17 @@ def filter_fastq(
     length_bounds=(0, 2**32),
     quality_threshold=0,
 ):
-    """Фильтрует риды по GC-составу, длине и качеству"""
+    """
+    Фильтрует риды по GC-составу, длине и качеству
+    Arguments:
+    input_fastq: путь к исходному файлу
+    output_fastq: название выходного файла
+    gc_bounds=(0, 100): границы GC-состава
+    length_bounds=(0, 2**32): границы длины рида
+    quality_threshold=0: граница качества
+
+    Функция возвращает fastq файл с ридами, которые соответствуют всем заданным условиям
+    """
     output_dir = Path("filtered")
     output_dir.mkdir(exist_ok=True)
 
@@ -36,7 +46,12 @@ def filter_fastq(
 
 
 def convert_multiline_fasta_to_one_line(input_fasta, output_fasta=None):
-    """Преобразует многострочный FASTA в однострочный"""
+    """
+    Преобразует многострочный FASTA в однострочный
+    Arguments:
+    input_fasta: путь до входного файла
+    output_fasta=None: путь до выходного файла
+    """
 
     if output_fasta is None:
         input_path = Path(input_fasta)
@@ -47,7 +62,12 @@ def convert_multiline_fasta_to_one_line(input_fasta, output_fasta=None):
 
 
 def parse_blast_output(input_file, output_file):
-    """Сохраняет лучшие BLAST-совпадения в алфавитном порядке"""
+    """
+    Сохраняет лучшие совпадения ридов в алфавитном порядке в текстовый файл
+    Arguments:
+    input_fasta: путь до входного файла
+    output_fasta=None: путь до выходного файла
+    """
 
     with open(input_file, "r") as source:
         hits = get_best_hits(source)

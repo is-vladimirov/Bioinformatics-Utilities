@@ -2,7 +2,10 @@ import re
 
 
 def write_one_line_fasta(input_file, output_file):
-    """Преобразует многострочный FASTA в однострочный"""
+    """
+    Преобразует многострочный FASTA в однострочный
+
+    """
 
     sequence_started = False  # определяет читаем ли мы рид в данный момент, или нет
 
@@ -30,7 +33,9 @@ def write_one_line_fasta(input_file, output_file):
 
 
 def get_best_hits(input_file):
-    """Поиск лучшего совпадения в файле blast_results"""
+    """
+    Поиск лучшего совпадения в файле blast_results
+    """
 
     best_hits = []
     in_results = False
@@ -68,7 +73,9 @@ def get_best_hits(input_file):
 
 
 def write_sorted_hits(output_file, hits):
-    """Сортирует совпадения и записывает в файл"""
+    """
+    Сортирует совпадения и записывает в файл
+    """
 
     for hit in sorted(hits):
         output_file.write(hit + "\n")
