@@ -1,9 +1,9 @@
 # Bioinformatics Utilities
 
-Небольшой набор утилит на Python для преобразования файлов FASTQ, FASTA и BLAST.
-Не требует установки сторонних библиотек.
+A small set of Python utilities for converting FASTQ, FASTA, and BLAST files.
+No required installation of any additional libraries.
 
-## Структура проекта
+## Project structure
 ```
 Bioinformatics Utilities/
 ├── main.py
@@ -16,31 +16,31 @@ Bioinformatics Utilities/
 │   └── example_blast_results.txt
 └── README.md
 ```
-- `main.py` - основные функции для работы с файлами
+- `main.py` - contain the main functions
 
-- `helpers/fastq.py` - функции чтения, записи и фильтрации FASTQ
+- `helpers/fastq.py` - FASTQ reading, writing and filtering
 
-- `helpers/bio_files.py` - вспомогательные функции обработки FASTA и BLAST
+- `helpers/bio_files.py` - supporting functions for FASTA and BLAST
 
-- `data/` - исходные файлы (уже содержит тестовые файлы для проверки)
+- `data/` - source files (already includes test files for testing)
 
-- директория для отфильтрованных FASTQ-файлов `filtered/` создаётся автоматически
+- the directory for filtered FASTQ files `filtered/` is created automatically
 
-## Функционал
+## Functions list
 
-#### 1. Фильтрация FASTQ
+#### 1. FASTQ filtering
 
-Функция `filter_fastq()` фильтрует риды по следующим параметрам:
+`filter_fastq()` filters reads based on the following parameters:
 
-- GC-состав последовательности (в процентах)
+- GC content of the sequence (in percentage)
 
-- Длина последовательности
+- Sequence length
 
-- Среднее качество нуклеотидов (Phred+33) в последовательности
+- Average nucleotide quality in sequence (Phred+33) 
 
-Результат сохраняется в filtered/result.fastq. Для фильтрации по GC-составу и длине последовательности можно задавать обе границы, или только верхнюю.
+The result is saved to `filtered/result.fastq`. For filtering based on GC content and sequence length, you can specify both boundaries or just the upper boundary.
 
-Пример использования:
+Example of use:
 ```python 
 filter_fastq(
     input_fastq="data/example_fastq.fastq",
@@ -51,24 +51,24 @@ filter_fastq(
 )
 ```
 
-#### 2. Преобразование FASTA
+#### 2. Multiline FASTA converter
 
-Функция `convert_multiline_fasta_to_one_line()` преобразует многострочные FASTA-последовательности в однострочные.
+`convert_multiline_fasta_to_one_line()` converts multiline FASTA sequences into single-line sequences.
 
-Аргумент output_fasta необязателен. Если он не указан, создаётся файл с суффиксом _oneline.fasta.
+The `output_fasta` argument is optional. If it is not specified, a file with the suffix `_oneline.fasta` is created.
 
-Пример использования:
+Example of use:
 ```python 
 convert_multiline_fasta_to_oneline(
     input_fasta="data/example_multiline_fasta", output_fasta="data/oneline.fasta"
 )
 ```
 
-#### 3. Работа с BLAST
+#### 3. BLAST parsing
 
-Функция `parse_blast_output()` извлекает название лучшего совпадения с базой для каждой последовательности и записывает в файл в алфавитном порядке.
+`parse_blast_output()` extracts the name of the best database match for each sequence and writes it to a file in alphabetical order.
 
-Пример использования:
+Example of use:
 ```python 
 parse_blast_output(
     input_file="data/example_blast_results.txt", output_file="data/best_hits.txt"
@@ -76,13 +76,13 @@ parse_blast_output(
 ```
 
 
-## Использование
+## How to use
 
-Требуется Python 3.9 или новее.
+Python 3.9 or later is required.
 
-Склонируйте или скачайте проект и перейдите в его директорию.
+Clone or download the repository and navigate to main directory.
 
-Для использования функций импортируйте их из main.py:
+To use the functions, import them from `main.py`:
 ```python
 from main import filter_fastq, convert_multiline_fasta_to_oneline, parse_blast_output
 ```
