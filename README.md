@@ -8,7 +8,6 @@
 Bioinformatics Utilities/
 ├── main.py
 ├── helpers/
-│   ├── __init__.py
 │   ├── fastq.py
 │   └── bio_files.py
 ├── data/
